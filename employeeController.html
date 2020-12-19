@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Employee Portal</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+ <nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-nav nav-fill" href="/new_employee">Add Employee</a>
+  <form class="form-inline" action="/search_employee" method="POST">
+    <input class="form-control mr-sm-2" type="search" placeholder="Enter Employee Name" name="searchName" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Role</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">City</th>
+       <th scope="col">State</th>
+       <th scope="col">Email Address</th>
+       <th scope="col">Project Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  %for row in rows:
+    <tr>
+      <td>{{row['name']}}</td>
+      <td>{{row['role']}}</td>
+      <td>{{row['phoneNumber']}}</td>
+      <td>{{row['city']}}</td>
+      <td>{{row['state']}}</td>
+      <td>{{row['email']}}</td>
+      <td>{{row['projectStatus']}}</td>
+       <td><a href="/update_employee/{{row['_id']}}"><i class="material-icons">edit</i></a></td>
+    </tr>
+  %end
+  </tbody>
+</table>
+</div>
+<div class="container" style="margin-left: 500px">
+    <a href="/"><button type="button" class="btn btn-secondary">Back</button></a>
+</div>
+<br>
+</body>
+</html>
